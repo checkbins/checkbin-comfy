@@ -20,7 +20,7 @@ class CheckbinGetImageBinNode:
     FUNCTION = "get_image"
 
     def get_image(self, bin: checkbin.Bin, name: str):
-        file_url = bin.get_file_url(name)
+        file_url = bin.get_input_file_url(name)
 
         if file_url is None:
             raise ValueError(f"No file found with name: {name}")
@@ -52,7 +52,7 @@ class CheckbinGetStringBinNode:
     FUNCTION = "get_string"
 
     def get_string(self, bin: checkbin.Bin, name: str):
-        string = bin.get_data(name)
+        string = bin.get_input_data(name)
 
         if string is None:
             raise ValueError(f"No data found with name: {name}")
