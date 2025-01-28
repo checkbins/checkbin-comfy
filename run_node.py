@@ -18,7 +18,7 @@ class CheckbinStartRunNode:
         }
 
     @classmethod
-    def IS_CHANGED(cls):
+    def IS_CHANGED(cls, **kwargs):
         return float("NaN")
 
     RETURN_TYPES = ("CHECKBIN",)
