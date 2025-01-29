@@ -24,7 +24,7 @@ class CheckbinStartRunNode:
     RETURN_TYPES = ("CHECKBIN",)
     RETURN_NAMES = ("bin",)
     OUTPUT_IS_LIST = (True,)
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "start_run"
 
     def start_run(

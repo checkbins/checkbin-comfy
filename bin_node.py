@@ -16,7 +16,7 @@ class CheckbinGetImageBinNode:
 
     RETURN_TYPES = ("CHECKBIN", "IMAGE")
     RETURN_NAMES = ("bin", "image")
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "get_image"
 
     def get_image(self, bin: checkbin.Bin, name: str):
@@ -48,7 +48,7 @@ class CheckbinGetStringBinNode:
 
     RETURN_TYPES = ("CHECKBIN", "STRING")
     RETURN_NAMES = ("bin", "string")
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "get_string"
 
     def get_string(self, bin: checkbin.Bin, name: str):
@@ -76,7 +76,7 @@ class CheckbinSaveImageBinNode:
 
     RETURN_TYPES = ("CHECKBIN", "IMAGE")
     RETURN_NAMES = ("bin", "image")
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "save_image"
 
     def save_image(self, bin: checkbin.Bin, image: torch.Tensor, name: str):
@@ -100,7 +100,7 @@ class CheckbinSaveStringBinNode:
 
     RETURN_TYPES = ("CHECKBIN", "STRING")
     RETURN_NAMES = ("bin", "string")
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "save_string"
 
     def save_string(self, bin: checkbin.Bin, string: str, name: str):
@@ -121,7 +121,7 @@ class CheckbinSubmitBinNode:
     RETURN_TYPES = ()
     OUTPUT_NODE = True
 
-    CATEGORY = "tracing"
+    CATEGORY = "comparison"
     FUNCTION = "submit_bin"
 
     def submit_bin(self, bin: checkbin.Bin):
