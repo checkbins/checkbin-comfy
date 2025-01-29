@@ -1,4 +1,5 @@
 import checkbin
+import os
 
 
 class CheckbinStartRunNode:
@@ -10,6 +11,7 @@ class CheckbinStartRunNode:
             },
             "optional": {
                 "app_key": ("STRING",),
+                "directory": ("STRING",),
                 "checkin_id": ("STRING",),
                 "set_id": ("STRING",),
                 "run_id": ("STRING",),
@@ -31,6 +33,7 @@ class CheckbinStartRunNode:
         self,
         token,
         app_key="comfyui",
+        directory=None,
         checkin_id=None,
         set_id=None,
         run_id=None,
@@ -38,6 +41,31 @@ class CheckbinStartRunNode:
     ):
         checkbin.authenticate(token=token)
         checkbin_app = checkbin.App(app_key=app_key)
+
+        if directory is not None and directory != "":
+            if not os.path.isdir(directory):
+                raise FileNotFoundError(f"Directory '{directory} cannot be found.'")
+            dir_files = os.listdir(directory)
+            if len(dir_files) == 0:
+                raise FileNotFoundError(f"No files in directory '{directory}'.")
+
+            # Filter files by extension
+            valid_extensions = [".jpg", ".jpeg", ".png", ".webp"]
+            dir_files = [
+                f
+                for f in dir_files
+                if any(f.lower().endswith(ext) for ext in valid_extensions)
+            ]
+
+            input_set = checkbin_app.create_input_set(
+                "ComfyUI auto generated input set"
+            )
+
+            for file in dir_files:
+                checkin = input_set.add_input()
+                checkin.upload_file("image", f"{directory}/{file}", "image")
+
+            set_id = input_set.submit()
 
         if checkin_id == "":
             checkin_id = None
