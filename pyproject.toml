@@ -1,0 +1,15 @@
+[project]
+name = "checkbin-comfy"
+description = "These nodes allow you to make Checkbin comparisons."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["checkbin"]
+
+[project.urls]
+Repository = "https://github.com/checkbins/checkbin-comfy"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "checkbin-comfy"
+Icon = ""
